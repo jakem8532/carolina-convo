@@ -16,8 +16,17 @@ const Home = () => {
     return(
         <main>
             <div>
-                
+                <ConvoList/>
+            </div>
+            <div>
+                {loggedIn && (
+                    <div>
+                        <PostForm/>
+                    </div>
+                )}
             </div>
         </main>
-    )
-}
+    );
+};
+
+export default Home;

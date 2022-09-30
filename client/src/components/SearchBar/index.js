@@ -5,8 +5,7 @@ import React from 'react';
 
 const SearchBar = () => {
     
-    
-    
+
     
     return ( 
         <div>
@@ -21,10 +20,10 @@ const SearchBar = () => {
                 name="search"
                 type="search"
                 id="search"
-                value={forState.search}
+                value={formState.search}
                 onChange={handlechange}
                 />
-                <button>Search</button>
+                <button className="" type="submit">Search</button>
             </form>
         </div>
 
