@@ -26,13 +26,19 @@ const userSchema = new Schema(
     conversation: [
       {
         type: Schema.Types.ObjectId,
-        ref: "Convo",
+        ref: "Chat",
       },
     ],
     friends: [
       {
         type: Schema.Types.ObjectId,
         ref: "User",
+      },
+    ],
+    invites: [
+      {
+        type: String,
+        trim: true,
       },
     ],
   },

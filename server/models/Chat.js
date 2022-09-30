@@ -1,21 +1,20 @@
 const { Schema, model } = require("mongoose");
 const dateFormatter = require("../utils/dateFormatter");
 
-const messageSchema = new Schema(
+const chatSchema = new Schema(
   {
+    title: {
+      type: String,
+      required: true,
+      unique: true,
+      trim: true,
+    },
     createdAt: {
       type: Date,
       default: Date.now,
       get: (timestamp) => dateFormatter(timestamp),
     },
-    messageBody: {
-      type: String,
-      trim: true,
-    },
-    username: {
-      type: String,
-      required: true,
-    },
+    messages: [messageSchema],
   },
   {
     toJSON: {
@@ -24,6 +23,6 @@ const messageSchema = new Schema(
   }
 );
 
-const Message = model("Message", messageSchema);
+const Chat = model("Chat", chatSchema);
 
-module.exports = Message;
+module.exports = Chat;
