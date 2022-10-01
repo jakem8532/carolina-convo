@@ -35,7 +35,13 @@ const userSchema = new Schema(
         ref: "User",
       },
     ],
-    invites: [
+    chatInvites: [
+      {
+        type: String,
+        trim: true,
+      },
+    ],
+    friendInvites: [
       {
         type: String,
         trim: true,

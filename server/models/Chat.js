@@ -1,4 +1,5 @@
 const { Schema, model } = require("mongoose");
+const messageSchema = require("./Message");
 const dateFormatter = require("../utils/dateFormatter");
 
 const chatSchema = new Schema(
@@ -13,6 +14,10 @@ const chatSchema = new Schema(
       type: Date,
       default: Date.now,
       get: (timestamp) => dateFormatter(timestamp),
+    },
+    invitedBy: {
+      type: String,
+      required: true,
     },
     messages: [messageSchema],
   },
