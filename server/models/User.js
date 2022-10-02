@@ -35,18 +35,6 @@ const userSchema = new Schema(
         ref: "User",
       },
     ],
-    chatInvites: [
-      {
-        type: String,
-        trim: true,
-      },
-    ],
-    friendInvites: [
-      {
-        type: String,
-        trim: true,
-      },
-    ],
   },
   {
     toJSON: {

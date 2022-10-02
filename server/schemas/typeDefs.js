@@ -7,14 +7,12 @@ const typeDefs = gql`
     email: String
     chats: [Chat]
     friends: [User]
-    chatInvites: [String]
-    friendInvites: [String]
   }
 
   type Chat {
+    _id: ID
     title: String
     createdAt: String
-    invitedBy: String
     messages: [Message]
   }
 
@@ -30,6 +28,10 @@ const typeDefs = gql`
 
   type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
+    login(email: String!, password: String!): Auth
+    addChat(title: String!): Chat
+    addMessage(chatId: ID!, messageBody: String!): Chat
+    addFriend(friendId: ID!): User
   }
 
   type Auth {

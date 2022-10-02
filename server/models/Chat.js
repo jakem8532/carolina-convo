@@ -17,7 +17,6 @@ const chatSchema = new Schema(
     },
     invitedBy: {
       type: String,
-      required: true,
     },
     messages: [messageSchema],
   },
