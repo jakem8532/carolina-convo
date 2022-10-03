@@ -23,12 +23,10 @@ const userSchema = new Schema(
       required: true,
       minLength: 8,
     },
-    conversation: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: "Convo",
-      },
-    ],
+    chat: {
+      type: Schema.Types.ObjectId,
+      ref: 'Chat'
+    },
     friends: [
       {
         type: Schema.Types.ObjectId,
@@ -55,6 +53,10 @@ userSchema.pre("save", async function (next) {
 userSchema.methods.checkPassword = async function (password) {
   return bcrypt.compare(password, this.password);
 };
+
+userSchema.virtual('friendCount').get(function() {
+  return this.friends.length
+})
 
 const User = model("User", userSchema);
 
