@@ -17,6 +17,14 @@ const resolvers = {
 
       throw new AuthenticationError("Not logged in");
     },
+    users: async () => {
+      const users = await User.find()
+        .select("-__v -password")
+        .populate("friends")
+        .populate("chats");
+
+      return users;
+    },
   },
   Mutation: {
     addUser: async (parent, { username, email, password }) => {
@@ -84,6 +92,55 @@ const resolvers = {
           { $addToSet: { friends: friendId } },
           { new: true }
         ).populate("friends");
+
+        return updatedUser;
+      }
+
+      throw new AuthenticationError("You need to be logged in!");
+    },
+
+    sendInvite: async (parent, { chatId, chatTitle, receiver }, context) => {
+      if (context.user) {
+        const invitedUser = await User.findByIdAndUpdate(
+          { _id: receiver },
+          {
+            $addToSet: {
+              invites: {
+                chatId: chatId,
+                chatTitle: chatTitle,
+                senderUsername: context.user.username,
+              },
+            },
+          },
+          { new: true }
+        );
+
+        return invitedUser;
+      }
+
+      throw new AuthenticationError("You need to be logged in!");
+    },
+
+    joinChat: async (parent, { chatId }, context) => {
+      if (context.user) {
+        const updatedUser = User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $addToSet: { chats: chatId } },
+          { new: true }
+        );
+
+        return updatedUser;
+      }
+
+      throw new AuthenticationError("You need to be logged in!");
+    },
+    removeInvite: async (parent, { inviteId }, context) => {
+      if (context.user) {
+        const updatedUser = await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $pull: { invites: { _id: inviteId } } },
+          { new: true }
+        );
 
         return updatedUser;
       }

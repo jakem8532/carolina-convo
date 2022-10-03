@@ -1,4 +1,4 @@
-const { Schema, model } = require("mongoose");
+const { Schema } = require("mongoose");
 const dateFormatter = require("../utils/dateFormatter");
 
 const messageSchema = new Schema(

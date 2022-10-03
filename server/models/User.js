@@ -1,4 +1,5 @@
 const { Schema, model } = require("mongoose");
+const inviteSchema = require("./Invites");
 const bcrypt = require("bcrypt");
 
 const userSchema = new Schema(
@@ -35,6 +36,7 @@ const userSchema = new Schema(
         ref: "User",
       },
     ],
+    invites: [inviteSchema],
   },
   {
     toJSON: {
@@ -55,6 +57,14 @@ userSchema.pre("save", async function (next) {
 userSchema.methods.checkPassword = async function (password) {
   return bcrypt.compare(password, this.password);
 };
+
+userSchema.virtual("friendCount").get(function () {
+  return this.friends.length;
+});
+
+userSchema.virtual("inviteCount").get(function () {
+  return this.invites.length;
+});
 
 const User = model("User", userSchema);
 

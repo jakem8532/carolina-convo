@@ -6,7 +6,10 @@ const typeDefs = gql`
     username: String
     email: String
     chats: [Chat]
+    friendCount: Int
     friends: [User]
+    inviteCount: Int
+    invites: [Invites]
   }
 
   type Chat {
@@ -22,8 +25,16 @@ const typeDefs = gql`
     username: String
   }
 
+  type Invites {
+    _id: ID
+    chatTitle: String
+    senderUsername: String
+    chatId: String
+  }
+
   type Query {
     me: User
+    users: [User]
   }
 
   type Mutation {
@@ -32,6 +43,9 @@ const typeDefs = gql`
     addChat(title: String!): Chat
     addMessage(chatId: ID!, messageBody: String!): Chat
     addFriend(friendId: ID!): User
+    sendInvite(chatTitle: String!, chatId: String!, receiver: String!): User
+    joinChat(chatId: String!): User
+    removeInvite(inviteId: String!): User
   }
 
   type Auth {
