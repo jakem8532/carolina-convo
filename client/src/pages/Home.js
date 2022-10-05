@@ -5,6 +5,7 @@ import PostForm from '../components/PostForm';
 import Auth from '../utils/auth';
 import { useQuery } from '@apollo/client';
 import { QUERY_CONVOS, QUERY_ME_BASIC } from '../utils/queries';
+import styles from "../index.css";
 
 const Home = () => {
     const { loading, data } = useQuery(QUERY_CONVOS);
@@ -14,13 +15,24 @@ const Home = () => {
     const loggedIn = Auth.loggedIn();
 
     return(
+        
         <main>
+            <hero className="hero background">
+                  <img src="../public/carolina.png"/>
+            </hero>
             <div>
+                <head>
+                    <div className="background">
+                        <SearchBar/>
+                    </div>
+                </head>
+            </div>
+            <div className="background">
                 <ConvoList/>
             </div>
             <div>
                 {loggedIn && (
-                    <div>
+                    <div className="background">
                         <PostForm/>
                     </div>
                 )}
