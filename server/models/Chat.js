@@ -1,6 +1,7 @@
 const { Schema, model } = require("mongoose");
 const messageSchema = require("./Message");
 const dateFormatter = require("../utils/dateFormatter");
+const moment = require('moment')
 
 const chatSchema = new Schema(
   {

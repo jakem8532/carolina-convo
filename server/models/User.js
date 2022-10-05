@@ -1,6 +1,7 @@
 const { Schema, model } = require("mongoose");
 const inviteSchema = require("./Invites");
 const bcrypt = require("bcrypt");
+const moment = require('moment')
 
 const userSchema = new Schema(
   {

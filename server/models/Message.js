@@ -1,5 +1,6 @@
 const { Schema } = require("mongoose");
 const dateFormatter = require("../utils/dateFormatter");
+const moment = require('moment')
 
 const messageSchema = new Schema(
   {
