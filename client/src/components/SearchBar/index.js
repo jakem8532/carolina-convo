@@ -22,7 +22,7 @@ const SearchBar = () => {
                     value={formState.search}
                     onChange={handlechange}
                     />
-                    <button className="button-is-right button-is-rounded" type="submit">Search</button>
+                    <button className="button-is-right button-is-rounded button-is-primary" type="submit">Search</button>
                 </form>
             </div>
         </div>
