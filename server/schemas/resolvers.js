@@ -17,8 +17,9 @@ const resolvers = {
 
       throw new AuthenticationError("Not logged in");
     },
-    users: async () => {
-      const users = await User.find()
+    users: async (parent, { username }) => {
+      const params = username ? { username } : {};
+      const users = await User.find(params)
         .select("-__v -password")
         .populate("friends")
         .populate("chats");
