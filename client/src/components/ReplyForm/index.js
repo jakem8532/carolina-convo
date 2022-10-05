@@ -8,7 +8,7 @@ const replyForm = () => {
 
 
     return (
-        <div>
+        <div className="background">
       <p
         className={`m-0 ${characterCount === 280 || error ? 'text-error' : ''}`}
       >
@@ -20,13 +20,16 @@ const replyForm = () => {
         onSubmit={handleFormSubmit}
       >
         <textarea
-          placeholder="Talk about the 'goings on' around North Carolina"
+          placeholder="Reply to this post..."
           value={thoughtText}
           className="text-area col-12 col-md-9"
           onChange={handleChange}
         ></textarea>
-        <button className="button-is-right button-is-rounded button-is-primary col-12 col-md-3" type="submit">
-          Submit
+        <button className="button-is-right button-is-rounded button-is-primary" type="submit">
+            Submit
+        </button>
+        <button className="button-is-right button-is-rounded button-is-danger" type="submit">
+            Cancel
         </button>
       </form>
     </div>

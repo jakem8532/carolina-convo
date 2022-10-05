@@ -7,7 +7,7 @@ const ConvoList = ({ convo, title }) => {
     }
 
     return (
-        <div>
+        <div className="background">
             <h2>{title}</h2>
             {convo &&
                 convo.map(convo => (

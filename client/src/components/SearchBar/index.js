@@ -13,7 +13,7 @@ const SearchBar = () => {
             <div className="icon-text">
                 Carolina-Convo
                 <form onSubmit={handleFormSubmit} className="tags.is-right">
-                    <input
+                    <textarea
                     className="textarea"
                     placeholder="Search Conversations"
                     name="search"
@@ -22,7 +22,12 @@ const SearchBar = () => {
                     value={formState.search}
                     onChange={handlechange}
                     />
-                    <button className="button-is-right button-is-rounded button-is-primary" type="submit">Search</button>
+                    <button className="button-is-right button-is-rounded button-is-primary" type="submit">
+                        Search
+                    </button>
+                    <button className="button-is-right button-is-rounded button-is-danger" type="submit">
+                        Cancel
+                    </button>
                 </form>
             </div>
         </div>
