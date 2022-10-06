@@ -20,6 +20,7 @@ const typeDefs = gql`
   }
 
   type Message {
+    _id: ID
     createdAt: String
     messageBody: String
     username: String

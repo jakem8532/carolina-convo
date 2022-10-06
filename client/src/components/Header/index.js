@@ -13,13 +13,13 @@ const Header = () => {
     <header className="">
       <div className="">
         <Link to="/">
-          <h1>Carolina-Convo</h1>
+          <h1>Carolina Convo</h1>
         </Link>
 
         <nav className="text-center">
           {Auth.loggedIn() ? (
             <>
-              <Link to="/profile">Me</Link>
+              <Link to="/profile">profile</Link>
               <a href="/" onClick={logout}>
                 Logout
               </a>
