@@ -16,7 +16,7 @@ const Home = () => {
     return(
         <main>
             <div>
-                <ConvoList/>
+                <ConvoList convos={convos} title='Your conversations'/>
             </div>
             <div>
                 {loggedIn && (

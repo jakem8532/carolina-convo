@@ -1,16 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const ConvoList = ({ convo, title }) => {
-    if (!convo.length) {
+const ConvoList = ({ convos, title }) => {
+    if (!convos.length) {
         return <h2>No Conversations Yet!</h2>;
     }
 
     return (
         <div>
             <h2>{title}</h2>
-            {convo &&
-                convo.map(convo => (
+            {convos &&
+                convos.map(convo => (
                     <div key={convo._id} className="">
                         <p className="">
                             Created by {convo.username}
