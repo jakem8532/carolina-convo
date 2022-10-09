@@ -23,6 +23,7 @@
   "homepage": "https://github.com/jakem8532/carolina-convo#readme",
   "dependencies": {
     "concurrently": "^7.4.0",
-    "moment": "^2.29.4"
+    "moment": "^2.29.4",
+    "react-router-dom": "^6.4.2"
   }
 }
