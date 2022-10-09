@@ -1,11 +1,11 @@
 const jwt = require("jsonwebtoken");
 
-const secret = "convo@carolina";
+const secret = "mysecretsshhhhh";
 const expiration = "2h";
 
 module.exports = {
   authMiddleware: function ({ req }) {
-    let token = req.headers.authorization;
+    let token = req.body.token || req.query.token || req.headers.authorization;
 
     //Removing Bearer from token
     if (req.headers.authorization) {
@@ -29,8 +29,8 @@ module.exports = {
     return req;
   },
 
-  signToken: function ({ _id, username, email }) {
-    const payload = { _id, username, email };
+  signToken: function ({ username, email, _id }) {
+    const payload = { username, email, _id };
 
     return jwt.sign({ data: payload }, secret, { expiresIn: expiration });
   },
