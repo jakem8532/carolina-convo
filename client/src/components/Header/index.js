@@ -1,37 +1,28 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 
-import Auth from '../../utils/auth';
+import Auth from "../../utils/auth";
 
 const Header = () => {
-  const logout = event => {
+  const logout = (event) => {
     event.preventDefault();
     Auth.logout();
   };
 
   return (
-    <header className="">
-      <div className="">
-        <Link to="/">
+    <header>
+      <nav className="link-wrapper">
+        <Link className="header-links" to="/">
           <h1>Carolina Convo</h1>
         </Link>
-
-        <nav className="text-center">
-          {Auth.loggedIn() ? (
-            <>
-              <Link to="/profile">profile</Link>
-              <a href="/" onClick={logout}>
-                Logout
-              </a>
-            </>
-          ) : (
-            <>
-              <Link to="/login">Login</Link>
-              <Link to="/signup">Signup</Link>
-            </>
-          )}
-        </nav>
-      </div>
+        {Auth.loggedIn() && (
+          <>
+            <a className="header-links" href="/" onClick={logout}>
+              Logout
+            </a>
+          </>
+        )}
+      </nav>
     </header>
   );
 };
