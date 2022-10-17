@@ -10,14 +10,14 @@ const ConvoList = ({ chats }) => {
     <div>
       {chats.map((chat) => (
         <div key={chat._id} className="">
-          <p className="">Created at {convo.createdAt}</p>
+          <p className="">Created at {chat.createdAt}</p>
           <div className="card-body">
-            <Link to={`/convo/${convo._id}`}>
-              <p>{convo.convoText}</p>
+            <Link to={`/convo/${chat._id}`}>
+              <p>{chat.convoText}</p>
               <p className="">
                 {" "}
-                Replies: {convo.replyCount} || Click to{" "}
-                {convo.replyCount ? "see" : "start"} the discussion!
+                Replies: {chat.replyCount} || Click to{" "}
+                {chat.replyCount ? "see" : "start"} the discussion!
               </p>
             </Link>
           </div>
