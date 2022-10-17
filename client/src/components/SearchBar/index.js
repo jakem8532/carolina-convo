@@ -7,11 +7,16 @@ const SearchBar = () => {
     const [formState, setFormState] = useState({ search: '' })
 
     const handleFormSubmit = async (event) => {
-
+        
     }
 
     const handleChange = event => {
+        const { name, value } = event.target
 
+        setFormState({
+            ...formState,
+            [name]: value,
+        })
     }
     
     return ( 
